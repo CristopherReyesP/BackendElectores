@@ -22,7 +22,10 @@ class Server {
         this.server = http.createServer( this.app );
         
         // Configuraciones de sockets
-        this.io = socketio( this.server, { /* configuraciones */ } );
+        this.io = socketio( this.server, { cors: {
+            origin: "*",
+            methods: ["GET", "POST"]
+          } } );
     }
 
     middlewares() {
@@ -43,6 +46,13 @@ class Server {
         this.app.use('/api/marcadores', require('../router/marcador'));
     }
 
+    this.app.use(function(req, res, next) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.header("Access-Control-Allow-Headers", "Content-Type");
+            res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+            next();
+          });
     // Esta configuración se puede tener aquí o como propieda de clase
     // depende mucho de lo que necesites
     configurarSockets() {
