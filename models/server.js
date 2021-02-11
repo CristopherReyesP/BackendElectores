@@ -22,7 +22,10 @@ class Server {
         this.server = http.createServer( this.app );
         
         // Configuraciones de sockets
-        this.io = socketio( this.server, { /* configuraciones */ } );
+        this.io = socketio( this.server, { cors: {
+            origin: "*",
+            methods: ["GET", "POST"]
+          } } );
     }
 
     middlewares() {
@@ -42,6 +45,7 @@ class Server {
         this.app.use('/api/usuarios', require('../router/usuarios'));
         this.app.use('/api/marcadores', require('../router/marcador'));
     }
+
 
     // Esta configuración se puede tener aquí o como propieda de clase
     // depende mucho de lo que necesites
