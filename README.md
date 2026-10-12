@@ -2,7 +2,7 @@
 
 Node.js/Express + MongoDB backend for a voter-canvassing ("censo electoral") tool: user accounts with roles, voter registration records, and real-time map markers shared between connected clients over Socket.IO.
 
-> Learning project built in February 2021 while practicing Express REST APIs, MongoDB/Mongoose, JWT auth and Socket.IO. Kept public as part of my learning history.
+> Client project: a voter census and registration system built for a paying client's municipal election campaign in Mexico. This repository is a partial copy of the backend, uploaded in February 2021 after delivery. The same client hired me again in 2024 for a new version (see [censoapi](https://github.com/CristopherReyesP/censoapi)).
 
 ## What it does
 
@@ -31,7 +31,7 @@ npm run dev     # nodemon index.js
 
 Requires a `.env` file (or equivalent environment configuration) providing `PORT`, `DB_CNN_STRING` (MongoDB connection string) and `JWT_KEY`.
 
-## What I practiced
+## Key techniques
 
 - REST API design with Express routers/controllers and Mongoose models
 - JWT-based authentication and route-level authorization middleware
